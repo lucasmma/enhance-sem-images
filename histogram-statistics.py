@@ -8,8 +8,9 @@ def neighbors(img, radius, rowNumber, columnNumber):
                     for i in range(rowNumber-1-radius, rowNumber+radius)]
 
 def mean_standard_deviation(img):
-  mean, standard_deviation = cv2.meanStdDev(img)
-  return mean[0][0], standard_deviation[0][0]
+  mean = img.mean()
+  standard_deviation = np.std(img)
+  return mean, standard_deviation
 
 def histogram_statistics (img, E, k0, k1, k2):
   new_img = []
@@ -22,7 +23,6 @@ def histogram_statistics (img, E, k0, k1, k2):
       pixel = row[y]
       local_image = neighbors(img, 1, x, y)
       local_mean, local_standard_deviation = mean_standard_deviation(np.uint8(local_image))
-
       if (local_mean <= k0 * global_mean) and (k1 * standard_deviation <= local_standard_deviation and local_standard_deviation <= k2 * standard_deviation):
         new_row.append(E * pixel)
       else:
@@ -34,9 +34,7 @@ def histogram_statistics (img, E, k0, k1, k2):
 
 def main():
   img = read_file("tungstenio.png")
-  print(img)
-  new_img = histogram_statistics(img, E=4, k0=0.95, k1=0.04,  k2=0.95)
-  print(new_img)
+  new_img = histogram_statistics(img, E=5.5, k0=0.4, k1=0.08,  k2=0.4)
   show_images([img, new_img])
 
 
