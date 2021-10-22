@@ -29,3 +29,6 @@ def show_images(images):
 def show_histogram(img):
   plt.hist(img.ravel(),256,[0,256])
   plt.show()
+
+def resize_img(img, width, height):
+  cv2.resize(img, (width, height))
