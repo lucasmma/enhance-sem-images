@@ -1,6 +1,8 @@
-from utils import read_file, show_images, neighbors, mean_standard_deviation
+from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file
 import cv2
 import numpy as np
+
+filenames = ['planta.jpg', 'polen_big.jpg', 'polen.jpg', 'tartigrado.jpg', 'texture.jpg', 'tungstenio.png']
 
 def localEnhancement (img, k, b):
   new_img = []
@@ -23,11 +25,13 @@ def localEnhancement (img, k, b):
 
 
 def main():
-  img = read_file("tartigrado.jpg")
+  for filename in filenames:
+    img = read_file(filename)
 
-  new_img = localEnhancement(img, 0.23, 2)
+    new_img = localEnhancement(img, 0.23, 2)
 
-  show_images([img, new_img])
+    # show_images([img, new_img])
+    save_file(r"results\\local-enhancement\\" + filename, new_img)
 
 
 if __name__ == "__main__":
