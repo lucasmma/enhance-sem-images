@@ -35,7 +35,7 @@ def main():
     img = read_file(filename)
     # new_img = histogram_statistics(img, E=5.5, k0=0.4, k1=0.04,  k2=0.95)
     # new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
-    new_img = histogram_statistics(img, E=3, k0=0.2, k1=0.01,  k2=0.8)
+    new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
     # show_images([img, new_img])
     save_file(r"results\\histogram-statistics\\" + filename, new_img)
 
