@@ -1,4 +1,4 @@
-from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file
+from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file, show_histogram
 import cv2
 import numpy as np
 
@@ -29,7 +29,8 @@ def main():
     img = read_file(filename)
 
     new_img = localEnhancement(img, 0.23, 2)
-
+    # show_histogram(img)
+    # show_histogram(new_img)
     # show_images([img, new_img])
     save_file(r"results\\local-enhancement\\" + filename, new_img)
 

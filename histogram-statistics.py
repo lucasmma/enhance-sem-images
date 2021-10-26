@@ -1,4 +1,4 @@
-from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file
+from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file, show_histogram
 import cv2
 import numpy as np
 
@@ -36,6 +36,8 @@ def main():
     # new_img = histogram_statistics(img, E=5.5, k0=0.4, k1=0.04,  k2=0.95)
     # new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
     new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
+    # show_histogram(img)
+    # show_histogram(new_img)
     # show_images([img, new_img])
     save_file(r"results\\histogram-statistics\\" + filename, new_img)
 
