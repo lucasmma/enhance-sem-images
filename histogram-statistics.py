@@ -1,6 +1,9 @@
-from utils import read_file, show_images, neighbors, mean_standard_deviation
+from utils import read_file, show_images, neighbors, mean_standard_deviation, save_file
 import cv2
 import numpy as np
+
+
+filenames = ['planta.jpg', 'polen_big.jpg', 'polen.jpg', 'tartigrado.jpg', 'texture.jpg', 'tungstenio.png']
 
 def histogram_statistics (img, E, k0, k1, k2):
   new_img = []
@@ -28,11 +31,13 @@ def histogram_statistics (img, E, k0, k1, k2):
 
 
 def main():
-  img = read_file("tungstenio.png")
-  # new_img = histogram_statistics(img, E=5.5, k0=0.4, k1=0.04,  k2=0.95)
-  # new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
-  new_img = histogram_statistics(img, E=3, k0=0.2, k1=0.01,  k2=0.8)
-  show_images([img, new_img])
+  for filename in filenames:
+    img = read_file(filename)
+    # new_img = histogram_statistics(img, E=5.5, k0=0.4, k1=0.04,  k2=0.95)
+    # new_img = histogram_statistics(img, E=5.5, k0=0.95, k1=0.040,  k2=0.95)
+    new_img = histogram_statistics(img, E=3, k0=0.2, k1=0.01,  k2=0.8)
+    # show_images([img, new_img])
+    save_file(r"results\\histogram-statistics\\" + filename, new_img)
 
 
 if __name__ == "__main__":
